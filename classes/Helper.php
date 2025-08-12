@@ -2,7 +2,7 @@
 /**
  * All helpers functions
  */
-namespace Codexpert\Weading_Photo_Share;
+namespace Wppluginhub\Weading_Photo_Share;
 
 /**
  * if accessed directly, exit.

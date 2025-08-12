@@ -10,7 +10,7 @@
  * Domain Path: /languages
  */
 
-namespace Codexpert\Weading_Photo_Share;
+namespace Wppluginhub\Weading_Photo_Share;
 use WpPluginHub\Plugin\Notice;
 
 /**

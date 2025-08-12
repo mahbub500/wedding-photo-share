@@ -2,9 +2,9 @@
 /**
  * All public facing functions
  */
-namespace Codexpert\Weading_Photo_Share\App;
+namespace Wppluginhub\Weading_Photo_Share\App;
 use WpPluginHub\Plugin\Base;
-use Codexpert\Weading_Photo_Share\Helper;
+use Wppluginhub\Weading_Photo_Share\Helper;
 /**
  * if accessed directly, exit.
  */

@@ -2,7 +2,7 @@
 /**
  * All Shortcode related functions
  */
-namespace Codexpert\Weading_Photo_Share\App;
+namespace Wppluginhub\Weading_Photo_Share\App;
 use WpPluginHub\Plugin\Base;
 
 /**

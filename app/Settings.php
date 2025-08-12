@@ -2,8 +2,8 @@
 /**
  * All settings related functions
  */
-namespace Codexpert\Weading_Photo_Share\App;
-use Codexpert\Weading_Photo_Share\Helper;
+namespace Wppluginhub\Weading_Photo_Share\App;
+use Wppluginhub\Weading_Photo_Share\Helper;
 use WpPluginHub\Plugin\Base;
 use WpPluginHub\Plugin\Settings as Settings_API;
 

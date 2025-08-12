@@ -2,7 +2,7 @@
 /**
  * All common functions to load in both admin and front
  */
-namespace Codexpert\Weading_Photo_Share\App;
+namespace Wppluginhub\Weading_Photo_Share\App;
 use WpPluginHub\Plugin\Base;
 
 /**
