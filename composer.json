@@ -7,7 +7,7 @@
     ],
     "require": {
         "wppluginhub/plugin": "dev-master",
-        "endroid/qr-code": "^6.0"
+        "chillerlan/php-qrcode": "dev-main"
     },
     "autoload": {
         "psr-4": {

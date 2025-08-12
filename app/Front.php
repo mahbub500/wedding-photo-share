@@ -5,6 +5,8 @@
 namespace Wppluginhub\Weading_Photo_Share\App;
 use WpPluginHub\Plugin\Base;
 use Wppluginhub\Weading_Photo_Share\Helper;
+
+
 /**
  * if accessed directly, exit.
  */
@@ -31,7 +33,12 @@ class Front extends Base {
 		$this->version	= $this->plugin['Version'];
 	}
 
-	public function head() {}
+	public function head() {
+		
+
+
+
+	}
 	
 	/**
 	 * Enqueue JavaScripts and stylesheets
@@ -56,4 +63,6 @@ class Front extends Base {
 			<img id="weadding-photo-share-modal-loader" src="' . esc_attr( WEADDING_PHOTO_SHARE_ASSET . '/img/loader.gif' ) . '" />
 		</div>';
 	}
+
+
 }

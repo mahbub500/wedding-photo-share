@@ -105,7 +105,7 @@ final class Plugin {
 		$this->plugin['min_php']		= '5.6';
 		$this->plugin['min_wp']			= '4.0';
 		$this->plugin['icon']			= WEADDING_PHOTO_SHARE_ASSET . '/img/icon.png';
-		$this->plugin['depends']		= [ 'woocommerce/woocommerce.php' => 'WooCommerce' ];
+		// $this->plugin['depends']		= [ 'woocommerce/woocommerce.php' => 'WooCommerce' ];
 		
 	}
 
@@ -168,6 +168,7 @@ final class Plugin {
 			 */
 			$shortcode = new App\Shortcode( $this->plugin );
 			$shortcode->register( 'my_shortcode', 'my_shortcode' );
+			// $shortcode->register( 'qr_code', 'qr_code_shortcode' );
 
 		endif;
 
