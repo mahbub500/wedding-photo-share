@@ -13,8 +13,7 @@ A simple and joyful plugin that allows wedding guests to **upload photos** by sc
 ## 📥 Installation  
 1. 📁 Upload the `wedding-photo-share` folder to your WordPress plugins directory (`/wp-content/plugins/`).  
 2. ⚙️ Activate the plugin in the WordPress admin.  
-3. 📝 Create a new Page and insert the shortcode:  
-[wps_wedding_portal]
+3. 📝 Create a new Page and insert the shortcode: [wps_wedding_portal]
 4. 🎟️ Generate a QR code pointing to the page URL you created and print it on cards for guests.  
 
 ## 🔒 Notes & Security  
