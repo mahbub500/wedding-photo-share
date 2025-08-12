@@ -3,7 +3,7 @@
  * All common functions to load in both admin and front
  */
 namespace Codexpert\Weading_Photo_Share\App;
-use Codexpert\Plugin\Base;
+use WpPluginHub\Plugin\Base;
 
 /**
  * if accessed directly, exit.

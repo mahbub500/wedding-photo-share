@@ -11,7 +11,7 @@
  */
 
 namespace Codexpert\Weading_Photo_Share;
-use Codexpert\Plugin\Notice;
+use WpPluginHub\Plugin\Notice;
 
 /**
  * if accessed directly, exit.

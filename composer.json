@@ -1,12 +1,13 @@
 {
     "authors": [
         {
-            "name": "Codexpert",
-            "email": "hi@codexpert.io"
+            "name": "Mahbub",
+            "email": "mahbubmr500@gmail.com"
         }
     ],
     "require": {
-        "codexpert/plugin": "dev-master"
+        "wppluginhub/plugin": "dev-master",
+        "endroid/qr-code": "^6.0"
     },
     "autoload": {
         "psr-4": {

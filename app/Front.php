@@ -3,7 +3,7 @@
  * All public facing functions
  */
 namespace Codexpert\Weading_Photo_Share\App;
-use Codexpert\Plugin\Base;
+use WpPluginHub\Plugin\Base;
 use Codexpert\Weading_Photo_Share\Helper;
 /**
  * if accessed directly, exit.
