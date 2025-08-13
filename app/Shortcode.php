@@ -42,6 +42,7 @@ class Shortcode extends Base {
         <div id="my-upload-container">
             <button id="upload-btn" class="button button-primary">Upload Image(s)</button>
             <button id="show-images-btn" class="button">Show All Images</button>
+            <button id="download-selected-btn" class="button button-secondary" style="display:none;">Download Selected</button>
 
             <!-- Progress Bar -->
             <div id="upload-progress" style="display:none;margin-top:10px;">
@@ -49,8 +50,11 @@ class Shortcode extends Base {
                 <span id="upload-percent">0%</span>
             </div>
 
-            <!-- Gallery -->
-            <div id="image-gallery" class="image-grid" style="display:none;"></div>
+            <!-- Gallery with separate pagination -->
+            <div id="image-gallery">
+                <div id="image-container" class="image-grid"></div>
+                <div id="pagination-container" style="margin-top:20px;text-align:center;"></div>
+            </div>
         </div>
         <?php
         return ob_get_clean();

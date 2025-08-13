@@ -48,7 +48,10 @@ class Front extends Base {
 
 		wp_enqueue_style( $this->slug, plugins_url( "/assets/css/front{$min}.css", WEADDING_PHOTO_SHARE ), '', $this->version, 'all' );
 
+		wp_enqueue_style( $this->slug . '-pagination', 'https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.5/pagination.css', '', $this->version, 'all' );
+
 		wp_enqueue_script( $this->slug, plugins_url( "/assets/js/front{$min}.js", WEADDING_PHOTO_SHARE ), [ 'jquery' ], $this->version, true );
+		wp_enqueue_script( $this->slug . '-pagination', 'https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.5/pagination.min.js', [ 'jquery' ], $this->version, true );
 		
 		$localized = [
 			'ajaxurl'	=> admin_url( 'admin-ajax.php' ),

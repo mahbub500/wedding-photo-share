@@ -73,21 +73,50 @@ jQuery(function($) {
 	});
 
 
-    $('#show-images-btn').on('click', function() {
-	    $.post(WEADDING_PHOTO_SHARE.ajaxurl, { action: 'get_images' }, function(res) {
+	$('#show-images-btn').on('click', function () {
+	    $.post(WEADDING_PHOTO_SHARE.ajaxurl, { action: 'get_images' }, function (res) {
 	        if (res.success) {
-	            let html = '';
-	            res.data.forEach(function(img) {
-	                html += `
-	                    <div class="image-box">
-	                        <img src="${img}" alt="Uploaded Image">
-	                        <a href="${img}" download class="download-btn">Download</a>
-	                    </div>
-	                `;
-	            });
-	            $('#image-gallery').html(html).show();
+	            let images = res.data;
+
+	            if (images.length > 10) {
+	                $('#image-container').empty();
+	                $('#pagination-container').empty();
+
+	                $('#pagination-container').pagination({
+	                    dataSource: images,
+	                    pageSize: 10,
+	                    callback: function (data, pagination) {
+	                        let html = '';
+	                        data.forEach(function (img) {
+	                            html += `
+	                                <div class="image-box">
+	                                    <img src="${img}" alt="Uploaded Image">
+	                                    <a href="${img}" download class="download-btn">Download</a>
+	                                </div>
+	                            `;
+	                        });
+	                        $('#image-container').html(html);
+	                    }
+	                });
+	            } else {
+	                let html = '';
+	                images.forEach(function (img) {
+	                    html += `
+	                        <div class="image-box">
+	                            <img src="${img}" alt="Uploaded Image">
+	                            <a href="${img}" download class="download-btn">Download</a>
+	                        </div>
+	                    `;
+	                });
+	                $('#image-container').html(html);
+	                $('#pagination-container').hide();
+	            }
+
+	            $('#image-gallery').show();
 	        }
 	    });
 	});
+
+
 
 });
