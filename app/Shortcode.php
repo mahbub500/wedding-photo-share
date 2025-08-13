@@ -53,8 +53,9 @@ class Shortcode extends Base {
             <!-- Gallery with separate pagination -->
             <div id="image-gallery">
                 <div id="image-container" class="image-grid"></div>
-                <div id="pagination-container" style="margin-top:20px;text-align:center;"></div>
+                <div id="pagination-container"></div>
             </div>
+
         </div>
         <?php
         return ob_get_clean();

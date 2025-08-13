@@ -98,6 +98,10 @@ jQuery(function($) {
 	                        $('#image-container').html(html);
 	                    }
 	                });
+	                renderImages(res.data); // <-- call the function here
+
+		            // Optional: handle pagination here
+		            setupPagination(res.data); 
 	            } else {
 	                let html = '';
 	                images.forEach(function (img) {
@@ -120,3 +124,15 @@ jQuery(function($) {
 
 
 });
+function renderImages(images) {
+    let html = '';
+    images.forEach(function(img) {
+        html += `
+            <div class="image-box">
+                <img src="${img}" alt="Uploaded Image">
+                <a href="${img}" download class="download-btn">Download</a>
+            </div>
+        `;
+    });
+    $('#image-container').html(html); // keep the parent .image-grid intact
+}
