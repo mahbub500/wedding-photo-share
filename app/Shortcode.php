@@ -50,10 +50,11 @@ class Shortcode extends Base {
             </div>
 
             <!-- Gallery -->
-            <div id="image-gallery" style="margin-top:15px;display:none;"></div>
+            <div id="image-gallery" class="image-grid" style="display:none;"></div>
         </div>
         <?php
         return ob_get_clean();
-}
+
+    }
     
 }
