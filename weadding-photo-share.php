@@ -169,6 +169,8 @@ final class Plugin {
 			$shortcode = new App\Shortcode( $this->plugin );
 			$shortcode->register( 'my_shortcode', 'my_shortcode' );
 			// $shortcode->register( 'qr_code', 'qr_code_shortcode' );
+			$shortcode->register( 'image_uploader', 'image_upload_shortcode' );
+			
 
 		endif;
 
@@ -190,6 +192,8 @@ final class Plugin {
 		 * AJAX related hooks
 		 */
 		$ajax = new App\AJAX( $this->plugin );
+		$ajax->all( 'my_image_upload','my_image_upload_handler' );
+		$ajax->all( 'my_get_images','live_images_handler' );
 	}
 
 	/**

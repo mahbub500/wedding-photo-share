@@ -35,5 +35,25 @@ class Shortcode extends Base {
     public function my_shortcode() {
         return __( 'My Shortcode', 'weadding-photo-share' );
     }
+
+    public function image_upload_shortcode() {
+        ob_start();
+        ?>
+        <div id="my-upload-container">
+            <button id="upload-btn" class="button button-primary">Upload Image(s)</button>
+            <button id="show-images-btn" class="button">Show All Images</button>
+
+            <!-- Progress Bar -->
+            <div id="upload-progress" style="display:none;margin-top:10px;">
+                <progress value="0" max="100" style="width:100%;"></progress>
+                <span id="upload-percent">0%</span>
+            </div>
+
+            <!-- Gallery -->
+            <div id="image-gallery" style="margin-top:15px;display:none;"></div>
+        </div>
+        <?php
+        return ob_get_clean();
+}
     
 }
