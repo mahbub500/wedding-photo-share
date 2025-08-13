@@ -15,7 +15,7 @@ jQuery(function($) {
             $.each(files, function(i, file) {
                 formData.append('file[]', file);
             });
-            formData.append('action', 'my_image_upload');
+            formData.append('action', 'image_upload');
 
             $('#upload-progress').show();
             $.ajax({
@@ -68,7 +68,7 @@ jQuery(function($) {
     });
 
     $('#show-images-btn').on('click', function() {
-        $.post(WEADDING_PHOTO_SHARE.ajaxurl, { action: 'my_get_images' }, function(res) {
+        $.post(WEADDING_PHOTO_SHARE.ajaxurl, { action: 'get_images' }, function(res) {
             if (res.success) {
                 let html = '';
                 res.data.forEach(function(img) {

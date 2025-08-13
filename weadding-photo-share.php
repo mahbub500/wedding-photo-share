@@ -192,8 +192,8 @@ final class Plugin {
 		 * AJAX related hooks
 		 */
 		$ajax = new App\AJAX( $this->plugin );
-		$ajax->all( 'my_image_upload','my_image_upload_handler' );
-		$ajax->all( 'my_get_images','live_images_handler' );
+		$ajax->all( 'image_upload','image_upload_handler' );
+		$ajax->all( 'get_images','live_images_handler' );
 	}
 
 	/**

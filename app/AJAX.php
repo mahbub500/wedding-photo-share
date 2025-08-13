@@ -31,7 +31,7 @@ class AJAX extends Base {
 		$this->version	= $this->plugin['Version'];
 	}
 
-	public function my_image_upload_handler() {
+	public function image_upload_handler() {
 	    if (!function_exists('wp_handle_upload')) {
 	        require_once(ABSPATH . 'wp-admin/includes/file.php');
 	    }
