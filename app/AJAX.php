@@ -32,12 +32,19 @@ class AJAX extends Base {
 	}
 
 	public function image_upload_handler() {
-	    if (!function_exists('wp_handle_upload')) {
+	   if (!function_exists('wp_handle_upload')) {
 	        require_once(ABSPATH . 'wp-admin/includes/file.php');
 	    }
 
 	    $files = $_FILES['file'];
 	    $uploaded = [];
+
+	    // Create custom folder
+	    $upload_dir = wp_upload_dir();
+	    $custom_dir = $upload_dir['basedir'] . '/weadding-photos';
+	    if (!file_exists($custom_dir)) {
+	        wp_mkdir_p($custom_dir);
+	    }
 
 	    if (is_array($files['name'])) {
 	        foreach ($files['name'] as $key => $value) {
@@ -49,31 +56,38 @@ class AJAX extends Base {
 	                    'error'    => $files['error'][$key],
 	                    'size'     => $files['size'][$key]
 	                ];
-	                $movefile = wp_handle_upload($file, ['test_form' => false]);
-	                if ($movefile && !isset($movefile['error'])) {
-	                    $uploaded[] = $movefile['url'];
+
+	                // Save file into custom folder
+	                $filename = wp_unique_filename($custom_dir, $file['name']);
+	                $new_path = $custom_dir . '/' . $filename;
+	                if (move_uploaded_file($file['tmp_name'], $new_path)) {
+	                    $uploaded[] = $upload_dir['baseurl'] . '/weadding-photos/' . $filename;
 	                }
 	            }
 	        }
 	    }
 
+	    // Store uploaded URLs in WP option
+	    $stored_images = get_option('my_uploaded_images', []);
+	    $stored_images = array_merge($stored_images, $uploaded);
+	    update_option('my_uploaded_images', $stored_images);
+
 	    wp_send_json_success($uploaded);
 	}
 
 	public function live_images_handler() {
-	    $upload_dir = wp_upload_dir();
-	    $dir = $upload_dir['basedir'];
-	    $url = $upload_dir['baseurl'];
+	     $upload_dir = wp_upload_dir();
+	    $custom_dir = $upload_dir['basedir'] . '/weadding-photos';
+	    $custom_url = $upload_dir['baseurl'] . '/weadding-photos';
 
 	    $images = [];
-	    $rii = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($dir));
 
-
-	    foreach ($rii as $file) {
-	        if ($file->isDir()) continue;
-	        $ext = strtolower(pathinfo($file->getFilename(), PATHINFO_EXTENSION));
-	        if (in_array($ext, ['jpg', 'jpeg', 'png', 'gif', 'webp'])) {
-	            $images[] = str_replace($dir, $url, $file->getPathname());
+	    if (file_exists($custom_dir)) {
+	        $files = scandir($custom_dir);
+	        foreach ($files as $file) {
+	            if (preg_match('/\.(jpg|jpeg|png|gif|webp)$/i', $file)) {
+	                $images[] = $custom_url . '/' . $file;
+	            }
 	        }
 	    }
 
