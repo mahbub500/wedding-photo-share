@@ -79,50 +79,52 @@ jQuery(function($) {
 
 
 	$('#show-images-btn').on('click', function () {
-	    $.post(WEADDING_PHOTO_SHARE.ajaxurl, { action: 'get_images', _wpnonce: WEADDING_PHOTO_SHARE._wpnonce }, function (res) {
-	        if (res.success) {
-	            let images = res.data;
+    $.post(WEADDING_PHOTO_SHARE.ajaxurl, { action: 'get_images', _wpnonce: WEADDING_PHOTO_SHARE._wpnonce }, function (res) {
+        if (res.success) {
+            let images = res.data;
 
-	            if (images.length > 10) {
-				    $('#image-container').empty();
-				    $('#pagination-container').empty();
+            $('#image-container').empty();
+            $('#pagination-container').empty();
 
-				    $('#pagination-container').pagination({
-				        dataSource: images,
-				        pageSize: 10,
-				        callback: function (data, pagination) {
-				            let html = '';
-				            data.forEach(function (img) {
-				                html += `
-				                    <div class="image-box">
-				                        <img src="${img}" alt="Uploaded Image">
-				                        <a href="${img}" download class="download-btn">Download</a>
-				                    </div>
-				                `;
-				            });
-				            $('#image-container').html(html);
-				        }
-				    });
+            if (images.length === 0) {
+                $('#image-container').html('<p style="text-align:center; font-style:italic;">No images uploaded yet.</p>');
+            } else if (images.length > 10) {
+                // Pagination for more than 10 images
+                $('#pagination-container').pagination({
+                    dataSource: images,
+                    pageSize: 10,
+                    callback: function (data, pagination) {
+                        let html = '';
+                        data.forEach(function (img) {
+                            html += `
+                                <div class="image-box">
+                                    <img src="${img}" alt="Uploaded Image">
+                                    <a href="${img}" download class="download-btn">Download</a>
+                                </div>
+                            `;
+                        });
+                        $('#image-container').html(html);
+                    }
+                });
+            } else {
+                // Render images directly if 10 or less
+                let html = '';
+                images.forEach(function (img) {
+                    html += `
+                        <div class="image-box">
+                            <img src="${img}" alt="Uploaded Image">
+                            <a href="${img}" download class="download-btn">Download</a>
+                        </div>
+                    `;
+                });
+                $('#image-container').html(html);
+            }
 
-				} else {
-				    // If less than or equal to 10 images, just render directly without pagination
-				    let html = '';
-				    images.forEach(function (img) {
-				        html += `
-				            <div class="image-box">
-				                <img src="${img}" alt="Uploaded Image">
-				                <a href="${img}" download class="download-btn">Download</a>
-				            </div>
-				        `;
-				    });
-				    $('#image-container').html(html);
-				}
+            $('#image-gallery').show();
+        }
+    });
+});
 
-
-	            $('#image-gallery').show();
-	        }
-	    });
-	});
 
 	function renderImages(images) {
 	    let html = '';
