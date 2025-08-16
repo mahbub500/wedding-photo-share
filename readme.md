@@ -24,6 +24,14 @@ Select the page that you are add the `[image_uploader]` short code
 
 ![Upload Portal Screenshot](assets/img/Weading-settings.png "Wedding Photo Upload & downlode page")
 
+The qr code after add the short code `[qr_code]` 
+
+![Upload Portal Screenshot](assets/img/qr-code.png "Wedding Photo Upload & downlode page")
+
+The image uplode and show all image section `[qr_code]` 
+
+![Upload Portal Screenshot](assets/img/Weading-Photo-Share.png "Wedding Photo Upload & downlode page")
+
 ## 🔒 Notes & Security  
 - ⚠️ This plugin allows **anonymous uploads** — consider adding a **secret token** or **moderation** step before events.  
 - ✅ Allowed image types: **jpg, jpeg, png, gif, webp**.  
