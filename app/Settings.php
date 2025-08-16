@@ -68,7 +68,6 @@ class Settings extends Base {
 							'multiple'  => false, // true|false
 							'chosen'    => true
 						]
-						
 					]
 				],
 				
