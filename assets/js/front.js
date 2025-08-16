@@ -124,18 +124,18 @@ jQuery(function($) {
 	    });
 	});
 
-function renderImages(images) {
-    let html = '';
-    images.forEach(function(img) {
-        html += `
-            <div class="image-box">
-                <img src="${img}" alt="Uploaded Image">
-                <a href="${img}" download class="download-btn">Download</a>
-            </div>
-        `;
-    });
-    $('#image-container').html(html); // keep the parent .image-grid intact
-}
+	function renderImages(images) {
+	    let html = '';
+	    images.forEach(function(img) {
+	        html += `
+	            <div class="image-box">
+	                <img src="${img}" alt="Uploaded Image">
+	                <a href="${img}" download class="download-btn">Download</a>
+	            </div>
+	        `;
+	    });
+	    $('#image-container').html(html); // keep the parent .image-grid intact
+	}
 
 });
 

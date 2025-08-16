@@ -18,6 +18,12 @@ A simple and joyful plugin that allows wedding guests to **upload photos** by sc
 5. 🎟️ Generate a QR code pointing to the page URL you created and print it on cards for guests.  
 6. ⚙️ From the plugin **Settings** page, select the page you added the `[image_uploader]` shortcode to.  
 
+## 📸 Settings   
+
+Select the page that you are add the `[image_uploader]` short code
+
+![Upload Portal Screenshot](assets/img/Weading-settings.png "Wedding Photo Upload & downlode page")
+
 ## 🔒 Notes & Security  
 - ⚠️ This plugin allows **anonymous uploads** — consider adding a **secret token** or **moderation** step before events.  
 - ✅ Allowed image types: **jpg, jpeg, png, gif, webp**.  
