@@ -70,6 +70,7 @@ jQuery(function($) {
 	                    }, 2000);
 
 	                    wps_modal( false );
+	                    window.location.reload();
 	                }
 	            }
 	        });
@@ -82,41 +83,40 @@ jQuery(function($) {
 	        if (res.success) {
 	            let images = res.data;
 
-
 	            if (images.length > 10) {
-    $('#image-container').empty();
-    $('#pagination-container').empty();
+				    $('#image-container').empty();
+				    $('#pagination-container').empty();
 
-    $('#pagination-container').pagination({
-        dataSource: images,
-        pageSize: 10,
-        callback: function (data, pagination) {
-            let html = '';
-            data.forEach(function (img) {
-                html += `
-                    <div class="image-box">
-                        <img src="${img}" alt="Uploaded Image">
-                        <a href="${img}" download class="download-btn">Download</a>
-                    </div>
-                `;
-            });
-            $('#image-container').html(html);
-        }
-    });
+				    $('#pagination-container').pagination({
+				        dataSource: images,
+				        pageSize: 10,
+				        callback: function (data, pagination) {
+				            let html = '';
+				            data.forEach(function (img) {
+				                html += `
+				                    <div class="image-box">
+				                        <img src="${img}" alt="Uploaded Image">
+				                        <a href="${img}" download class="download-btn">Download</a>
+				                    </div>
+				                `;
+				            });
+				            $('#image-container').html(html);
+				        }
+				    });
 
-} else {
-    // If less than or equal to 10 images, just render directly without pagination
-    let html = '';
-    images.forEach(function (img) {
-        html += `
-            <div class="image-box">
-                <img src="${img}" alt="Uploaded Image">
-                <a href="${img}" download class="download-btn">Download</a>
-            </div>
-        `;
-    });
-    $('#image-container').html(html);
-}
+				} else {
+				    // If less than or equal to 10 images, just render directly without pagination
+				    let html = '';
+				    images.forEach(function (img) {
+				        html += `
+				            <div class="image-box">
+				                <img src="${img}" alt="Uploaded Image">
+				                <a href="${img}" download class="download-btn">Download</a>
+				            </div>
+				        `;
+				    });
+				    $('#image-container').html(html);
+				}
 
 
 	            $('#image-gallery').show();

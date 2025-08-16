@@ -37,7 +37,7 @@ class AJAX extends Base {
 			'message' => __( 'Unauthorized!', 'codesigner' ),
 		);
 
-		if ( ! wp_verify_nonce( $_POST['_wpnonce'] ) ) {
+		if ( ! wp_verify_nonce( $_POST['_wpnonce'], $this->slug ) ) {
 			wp_send_json( $response );
 		}
 
@@ -91,7 +91,7 @@ class AJAX extends Base {
 			'message' => __( 'Unauthorized!', 'codesigner' ),
 		);
 
-		if ( ! wp_verify_nonce( $_POST['_wpnonce'] ) ) {
+		if ( ! wp_verify_nonce( $_POST['_wpnonce'], $this->slug ) ) {
 			wp_send_json( $response );
 		}
 

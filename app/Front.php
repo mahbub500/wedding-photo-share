@@ -55,7 +55,7 @@ class Front extends Base {
 		
 		$localized = [
 			'ajaxurl'	=> admin_url( 'admin-ajax.php' ),
-			'_wpnonce'	=> wp_create_nonce(),
+			'_wpnonce'	=> wp_create_nonce( $this->slug ),
 		];
 		wp_localize_script( $this->slug, 'WEADDING_PHOTO_SHARE', apply_filters( "{$this->slug}-localized", $localized ) );
 	}
