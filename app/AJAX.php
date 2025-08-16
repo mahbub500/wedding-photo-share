@@ -32,6 +32,15 @@ class AJAX extends Base {
 	}
 
 	public function image_upload_handler() {
+		$response = array(
+			'status'  => 0,
+			'message' => __( 'Unauthorized!', 'codesigner' ),
+		);
+
+		if ( ! wp_verify_nonce( $_POST['_wpnonce'] ) ) {
+			wp_send_json( $response );
+		}
+
 	   if (!function_exists('wp_handle_upload')) {
 	        require_once(ABSPATH . 'wp-admin/includes/file.php');
 	    }
@@ -76,7 +85,17 @@ class AJAX extends Base {
 	}
 
 	public function live_images_handler() {
-	     $upload_dir = wp_upload_dir();
+
+		$response = array(
+			'status'  => 0,
+			'message' => __( 'Unauthorized!', 'codesigner' ),
+		);
+
+		if ( ! wp_verify_nonce( $_POST['_wpnonce'] ) ) {
+			wp_send_json( $response );
+		}
+
+	    $upload_dir = wp_upload_dir();
 	    $custom_dir = $upload_dir['basedir'] . '/weadding-photos';
 	    $custom_url = $upload_dir['baseurl'] . '/weadding-photos';
 

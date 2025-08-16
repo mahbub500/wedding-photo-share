@@ -15,15 +15,17 @@ jQuery(function($) {
 	    }
 
 	    // Open file selector
-	    $('<input type="file" multiple>').on('change', function(e) {
+	   $('<input type="file" multiple accept="image/*">').on('change', function(e) {
 	        let files = e.target.files;
 	        let formData = new FormData();
 	        $.each(files, function(i, file) {
 	            formData.append('file[]', file);
 	        });
 	        formData.append('action', 'image_upload');
+	        formData.append('_wpnonce', WEADDING_PHOTO_SHARE._wpnonce);
 
 	        $('#upload-progress').show();
+	        wps_modal();
 	        $.ajax({
 	            url: WEADDING_PHOTO_SHARE.ajaxurl,
 	            type: 'POST',
@@ -66,6 +68,8 @@ jQuery(function($) {
 	                        $('#upload-progress progress').val(0);
 	                        $('#upload-percent').text('0%');
 	                    }, 2000);
+
+	                    wps_modal( false );
 	                }
 	            }
 	        });
@@ -74,56 +78,52 @@ jQuery(function($) {
 
 
 	$('#show-images-btn').on('click', function () {
-	    $.post(WEADDING_PHOTO_SHARE.ajaxurl, { action: 'get_images' }, function (res) {
+	    $.post(WEADDING_PHOTO_SHARE.ajaxurl, { action: 'get_images', _wpnonce: WEADDING_PHOTO_SHARE._wpnonce }, function (res) {
 	        if (res.success) {
 	            let images = res.data;
 
+
 	            if (images.length > 10) {
-	                $('#image-container').empty();
-	                $('#pagination-container').empty();
+    $('#image-container').empty();
+    $('#pagination-container').empty();
 
-	                $('#pagination-container').pagination({
-	                    dataSource: images,
-	                    pageSize: 10,
-	                    callback: function (data, pagination) {
-	                        let html = '';
-	                        data.forEach(function (img) {
-	                            html += `
-	                                <div class="image-box">
-	                                    <img src="${img}" alt="Uploaded Image">
-	                                    <a href="${img}" download class="download-btn">Download</a>
-	                                </div>
-	                            `;
-	                        });
-	                        $('#image-container').html(html);
-	                    }
-	                });
-	                renderImages(res.data); // <-- call the function here
+    $('#pagination-container').pagination({
+        dataSource: images,
+        pageSize: 10,
+        callback: function (data, pagination) {
+            let html = '';
+            data.forEach(function (img) {
+                html += `
+                    <div class="image-box">
+                        <img src="${img}" alt="Uploaded Image">
+                        <a href="${img}" download class="download-btn">Download</a>
+                    </div>
+                `;
+            });
+            $('#image-container').html(html);
+        }
+    });
 
-		            // Optional: handle pagination here
-		            setupPagination(res.data); 
-	            } else {
-	                let html = '';
-	                images.forEach(function (img) {
-	                    html += `
-	                        <div class="image-box">
-	                            <img src="${img}" alt="Uploaded Image">
-	                            <a href="${img}" download class="download-btn">Download</a>
-	                        </div>
-	                    `;
-	                });
-	                $('#image-container').html(html);
-	                $('#pagination-container').hide();
-	            }
+} else {
+    // If less than or equal to 10 images, just render directly without pagination
+    let html = '';
+    images.forEach(function (img) {
+        html += `
+            <div class="image-box">
+                <img src="${img}" alt="Uploaded Image">
+                <a href="${img}" download class="download-btn">Download</a>
+            </div>
+        `;
+    });
+    $('#image-container').html(html);
+}
+
 
 	            $('#image-gallery').show();
 	        }
 	    });
 	});
 
-
-
-});
 function renderImages(images) {
     let html = '';
     images.forEach(function(img) {
@@ -136,3 +136,6 @@ function renderImages(images) {
     });
     $('#image-container').html(html); // keep the parent .image-grid intact
 }
+
+});
+
