@@ -14,7 +14,7 @@ A simple and joyful plugin that allows wedding guests to **upload photos** by sc
 1. 📁 Upload the `wedding-photo-share` folder to your WordPress plugins directory (`/wp-content/plugins/`).  
 2. ⚙️ Activate the plugin in the WordPress admin.  
 3. 📝 Create a new Page and insert the shortcode `[image_uploader]` to show the **Upload** and **Show All Images** buttons.  
-4. 📝 Create a new Page and insert the shortcode `[qr_code]` to display the QR code.  
+4. 📝 Create a new Page and insert the shortcode `[weading_qr]` to display the QR code.  
 5. 🎟️ Generate a QR code pointing to the page URL you created and print it on cards for guests.  
 6. ⚙️ From the plugin **Settings** page, select the page you added the `[image_uploader]` shortcode to.  
 
@@ -24,11 +24,11 @@ Select the page that you are add the `[image_uploader]` short code
 
 ![Upload Portal Screenshot](assets/img/Weading-settings.png "Wedding Photo Upload & downlode page")
 
-The qr code after add the short code `[qr_code]` 
+The qr code after add the short code `[weading_qr]` 
 
 ![Upload Portal Screenshot](assets/img/qr-code.png "Wedding Photo Upload & downlode page")
 
-The image uplode and show all image section `[qr_code]` 
+The image uplode and show all image section `[weading_qr]` 
 
 ![Upload Portal Screenshot](assets/img/Weading-Photo-Share.png "Wedding Photo Upload & downlode page")
 
