@@ -34,10 +34,6 @@ class Shortcode extends Base {
         $this->version  = $this->plugin['Version'];
     }
 
-    public function my_shortcode() {
-        return __( 'My Shortcode', 'weadding-photo-share' );
-    }
-
     public function qr_code_shortcode( $atts ) {
         $image_uplode_page_url = get_permalink( Helper::get_option( 'weadding-photo-share_basic', 'image_page' ));
         

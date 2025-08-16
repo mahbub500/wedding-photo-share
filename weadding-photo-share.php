@@ -159,7 +159,6 @@ final class Plugin {
 			 * Shortcode related hooks
 			 */
 			$shortcode = new App\Shortcode( $this->plugin );
-			$shortcode->register( 'my_shortcode', 'my_shortcode' );
 			$shortcode->register( 'weading_qr', 'qr_code_shortcode' );
 			$shortcode->register( 'image_uploader', 'image_upload_shortcode' );
 			
