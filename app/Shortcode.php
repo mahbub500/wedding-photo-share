@@ -39,13 +39,13 @@ class Shortcode extends Base {
     public function qr_code_shortcode( $atts ) {
        $atts = shortcode_atts([
             'text' => 'https://google.com',
-            'size' => 200, // px
+            'size' => 300, // px
         ], $atts);
 
         $size = (int) $atts['size'];
         $url  = esc_url('https://api.qrserver.com/v1/create-qr-code/?size=' . $size . 'x' . $size . '&data=' . rawurlencode($atts['text']));
 
-        return '<img src="' . $url . '" alt="QR code" width="' . $size . '" height="' . $size . '">';
+        return '<div style="text-align:center;"><img src="' . $url . '" alt="QR code" width="' . $size . '" height="' . $size . '"></div>';
     }
 
     public function image_upload_shortcode() {
