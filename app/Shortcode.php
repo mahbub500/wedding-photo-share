@@ -38,7 +38,7 @@ class Shortcode extends Base {
         $image_uplode_page_url = get_permalink( Helper::get_option( 'weadding-photo-share_basic', 'image_page' ));
         
         $atts = shortcode_atts([
-            'text' => 'https://techwithmahbub.com/',
+            'text' => $image_uplode_page_url,
             'size' => 300, // px
         ], $atts);
 
