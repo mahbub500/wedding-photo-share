@@ -144,14 +144,6 @@ final class Plugin {
 			$settings = new App\Settings( $this->plugin );
 			$settings->action( 'plugins_loaded', 'init_menu' );
 
-			/**
-			 * Renders different notices
-			 * 
-			 * @package Codexpert\Plugin
-			 * 
-			 * @author Codexpert <hi@codexpert.io>
-			 */
-			$notice = new Notice( $this->plugin );
 
 		else : // ! is_admin() ?
 
@@ -173,20 +165,6 @@ final class Plugin {
 			
 
 		endif;
-
-		/**
-		 * Cron facing hooks
-		 */
-		$cron = new App\Cron( $this->plugin );
-		$cron->activate( 'install' );
-		$cron->deactivate( 'uninstall' );
-
-		/**
-		 * Common hooks
-		 *
-		 * Executes on both the admin area and front area
-		 */
-		$common = new App\Common( $this->plugin );
 
 		/**
 		 * AJAX related hooks

@@ -5,6 +5,8 @@
 namespace Wppluginhub\Weading_Photo_Share\App;
 use WpPluginHub\Plugin\Base;
 
+use Wppluginhub\Weading_Photo_Share\Helper;
+
 
 /**
  * if accessed directly, exit.
@@ -37,8 +39,10 @@ class Shortcode extends Base {
     }
 
     public function qr_code_shortcode( $atts ) {
-       $atts = shortcode_atts([
-            'text' => 'https://google.com',
+        $image_uplode_page_url = get_permalink( Helper::get_option( 'weadding-photo-share_basic', 'image_page' ));
+        
+        $atts = shortcode_atts([
+            'text' => $image_uplode_page_url,
             'size' => 300, // px
         ], $atts);
 
