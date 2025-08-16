@@ -58,7 +58,7 @@ class Settings extends Base {
 					'fields'    => [
 						'image_page' => [
 							'id'      => 'image_page',
-							'label'     => __( 'Select Image uplode page', 'weadding-photo-share' ),
+							'label'     => __( 'Image uplode page', 'weadding-photo-share' ),
 							'type'      => 'select',
 							'desc'      => __( 'jQuery Chosen plugin enabled. <a href="https://harvesthq.github.io/chosen/" target="_blank">[See more]</a>', 'weadding-photo-share' ),
 							// 'class'     => '',
